@@ -33,24 +33,34 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
+            Container(
+              padding: EdgeInsets.fromLTRB(20,50,50,40),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Log in",
+                style: TextStyle(fontSize: 50,fontWeight:FontWeight.bold ),
+              ),
+
+            ),
+            /*Padding(
               padding: EdgeInsets.all(50),
               child: Text(
                 "Log in",
                 style: TextStyle(fontSize: 50,fontWeight:FontWeight.bold ), 
               ),
-            ),
+            ),*/
             
            Container(
              /*child: FittedBox(
                fit: BoxFit.fill,*/
               child: Image.asset('images/38427.jpg'),
               width: MediaQuery.of(context).size.width*0.5,
-              margin: EdgeInsets.all(8),
+              margin: EdgeInsets.fromLTRB(0,0,0,50),
               
              //)
             ),
             Container(
+              margin: EdgeInsets.fromLTRB(0,0,0,10),
               child: TextField(
                 decoration: InputDecoration(
                   hintText: "📧 Email"
@@ -59,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 200
             ),
             Container(
+                margin: EdgeInsets.fromLTRB(0,0,0,20),
                 child: TextField(
                 decoration: InputDecoration(
                   hintText: "🔐 Password"
@@ -67,13 +78,22 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 240,
               padding: EdgeInsets.all(20)              
             ),
-            ElevatedButton(onPressed: _incrementCounter, child: Text("Log in")),
             Container(
-              width: 20,
-              child: TextField(
+              margin: EdgeInsets.fromLTRB(0,0,0,20),
+              child: ElevatedButton(onPressed: _incrementCounter, child: Text("Log in")),
+            ),
+            //ElevatedButton(onPressed: _incrementCounter, child: Text("Log in")),
+            
+              TextButton(
+                child: Text('Sing up'),
+                onPressed: () => print('clicked!'),
+                style: TextButton.styleFrom(
+                ),
                 
               ),
-            )
+               Spacer(),
+              
+                
           ],
         ),
       ),
