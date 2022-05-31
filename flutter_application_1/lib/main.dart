@@ -34,13 +34,12 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.fromLTRB(20,50,50,40),
+              padding: EdgeInsets.fromLTRB(20, 50, 50, 40),
               alignment: Alignment.centerLeft,
               child: Text(
                 "Log in",
-                style: TextStyle(fontSize: 50,fontWeight:FontWeight.bold ),
+                style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
               ),
-
             ),
             /*Padding(
               padding: EdgeInsets.all(50),
@@ -49,51 +48,66 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(fontSize: 50,fontWeight:FontWeight.bold ), 
               ),
             ),*/
-            
-           Container(
-             /*child: FittedBox(
+
+            Container(
+              /*child: FittedBox(
                fit: BoxFit.fill,*/
               child: Image.asset('images/38427.jpg'),
-              width: MediaQuery.of(context).size.width*0.5,
-              margin: EdgeInsets.fromLTRB(0,0,0,50),
-              
-             //)
+              width: MediaQuery.of(context).size.width * 0.5,
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 50),
+
+              //)
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(0,0,0,10),
+              width: 270,
+              padding: EdgeInsets.all(5),
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
               child: TextField(
-                decoration: InputDecoration(
-                  hintText: "📧 Email"
-                ),
+                decoration: InputDecoration(hintText: "📧 Email",
+                enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: BorderSide(
+                      color: Colors.black,
+                    ),
+                    )),
               ),
-              width: 200
             ),
             Container(
-                margin: EdgeInsets.fromLTRB(0,0,0,20),
+                width: 270,
+                padding: EdgeInsets.all(10),
+                margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
                 child: TextField(
-                decoration: InputDecoration(
-                  hintText: "🔐 Password"
+                  decoration: InputDecoration(hintText: "🔐 Password",
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: BorderSide(
+                      color: Colors.black,
+                    ),
+                  ),
                 ),
-              ),
-              width: 240,
-              padding: EdgeInsets.all(20)              
-            ),
+                )
+               ),
             Container(
-              margin: EdgeInsets.fromLTRB(0,0,0,20),
-              child: ElevatedButton(onPressed: _incrementCounter, child: Text("Log in")),
+              //margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+              //child: ElevatedButton(onPressed: _incrementCounter, child: Text("Log in")),
+              child: OutlinedButton(
+                child: const Text('Button'),
+                style: OutlinedButton.styleFrom(
+                    primary: Colors.black,
+                    shape: const StadiumBorder(),
+                    side: const BorderSide(color: Colors.black),
+                    minimumSize: Size(200, 40)),
+                onPressed: () {},
+              ),
             ),
             //ElevatedButton(onPressed: _incrementCounter, child: Text("Log in")),
-            
-              TextButton(
-                child: Text('Sing up'),
-                onPressed: () => print('clicked!'),
-                style: TextButton.styleFrom(
-                ),
-                
-              ),
-               Spacer(),
-              
-                
+
+            TextButton(
+              child: Text('Sing up'),
+              onPressed: () => print('clicked!'),
+              style: TextButton.styleFrom(),
+            ),
+            Spacer(),
           ],
         ),
       ),
