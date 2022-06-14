@@ -4,12 +4,22 @@ import 'package:flutter_application_1/sign_up.dart';
 class mainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //画面サイズからitemの縦サイズを指定
+    var _screenWidthTextSize = MediaQuery.of(context).size.width*0.7;
+
+    //画面サイズからitemの横サイズを指定
+    var _screenHeightTextsize = MediaQuery.of(context).size.height*0.06;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Container(
+              padding: EdgeInsets.only(top: 40),
+            ),
+
             Container(
               padding: EdgeInsets.fromLTRB(20, 50, 50, 40),
               alignment: Alignment.centerLeft,
@@ -24,15 +34,23 @@ class mainPage extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.5,
               margin: EdgeInsets.fromLTRB(0, 0, 0, 50),
             ),
+
             Container(
-              width: 270,
-              height: 50,
+              child: Text(
+                "Email"
+
+              ),
+            ),
+
+            //Email入力欄
+            Container(
+              width:   _screenWidthTextSize,
+              height:  _screenHeightTextsize,
               padding: EdgeInsets.all(5),
               margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
               child: TextField(
 
-                decoration: InputDecoration(hintText: "📧 Email",
-                hintStyle: const TextStyle(fontSize: 10),
+                decoration: InputDecoration(
               border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(
@@ -41,14 +59,15 @@ class mainPage extends StatelessWidget {
                     )),
               ),
             ),
+
+            //Password入力欄
             Container(
-                width: 270,
-                height: 50,
+                width:  _screenWidthTextSize,
+                height: _screenHeightTextsize,
                 padding: EdgeInsets.all(5),
                 margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
                 child: TextField(
-                  decoration: InputDecoration(hintText: "🔐 Password",
-                  hintStyle: const TextStyle(fontSize: 10),
+                  decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(
@@ -58,6 +77,11 @@ class mainPage extends StatelessWidget {
                 ),
                 )
                ),
+
+            Container(
+              padding: EdgeInsets.only(top: 20),
+            ),
+
             Container(
               child: OutlinedButton(
                 child: const Text('Log in'),
@@ -65,9 +89,13 @@ class mainPage extends StatelessWidget {
                     primary: Colors.black,
                     shape: const StadiumBorder(),
                     side: const BorderSide(color: Colors.black),
-                    minimumSize: Size(270, 40)),
+                    minimumSize: Size(_screenWidthTextSize, _screenHeightTextsize)),
                 onPressed: () {},
               ),
+            ),
+
+            Container(
+              padding: EdgeInsets.only(top: 20),
             ),
 
             TextButton(
