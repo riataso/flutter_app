@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/sign_up.dart';
 
 class mainPage extends StatelessWidget {
   @override
@@ -71,7 +72,12 @@ class mainPage extends StatelessWidget {
 
             TextButton(
               child: Text('Sing up'),
-              onPressed: () => print('clicked!'),
+              onPressed: () => {
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => sign_up()),
+                )
+              },
               style: TextButton.styleFrom(),
             ),
              const Spacer(),
@@ -81,4 +87,3 @@ class mainPage extends StatelessWidget {
     );
   }
 }
- 
