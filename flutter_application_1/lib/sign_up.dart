@@ -1,90 +1,96 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/controller/initial_setting_controller.dart';
 import 'package:flutter_application_1/main_page.dart';
+import 'package:flutter_application_1/initial_setting.dart';
+import 'package:flutter_application_1/view/signup_view/confirm_password_text_view.dart';
+import 'package:flutter_application_1/view/signup_view/signup_button_view.dart';
+import 'package:flutter_application_1/view/signup_view/signup_image_view.dart';
+import 'package:flutter_application_1/view/signup_view/signup_title_view.dart';
+import 'package:flutter_application_1/view/view_component/email_text_view.dart';
+import 'package:flutter_application_1/view/view_component/password_text_view.dart';
 
 
 class sign_up extends StatelessWidget {
   @override
   Widget build(BuildContext context){
+     //画面サイズからitemの縦サイズを指定
+    var _screenWidthTextSize = MediaQuery.of(context).size.width * 0.7;
+
+    //画面サイズからitemの横サイズを指定
+    var _screenHeightTextsize = MediaQuery.of(context).size.height * 0.04;
+
+    var _controller = signupController(context);
+
      return Scaffold(
-      body: Center(
+       body: SingleChildScrollView(
+        child: Container(
+	        height: MediaQuery.of(context).size.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-               padding: EdgeInsets.fromLTRB(20, 50, 50, 40),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Sign Up",
-                 style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-              ),
+          
+          //タイトル表示
+          signupTitleView(),
+            
+          
+          //写真表示
+          signupImageView(
+            MediaQuery.of(context).size.width * 0.5,
+            MediaQuery.of(context).size.height* 0.1
+          ),
+
+          // Emali入力欄
+            emailTextView(
+                _screenWidthTextSize,_screenHeightTextsize
+            ),
+              
+
+            //Password入力欄
+            passwordTextView(
+               _screenWidthTextSize,_screenHeightTextsize
             ),
 
-           Container(
-              child: Image.asset('images/signupimage.jpeg'),
-              width: MediaQuery.of(context).size.width * 0.3,
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 50),
+            //ConfirmPassword入力欄
+            confirmPasswordTextView(
+              _screenWidthTextSize,_screenHeightTextsize
+            ),
+               
+              Container(
+               height: 40,
+              ),
+
+             
+            signupButtonView(
+              _screenWidthTextSize,
+              _screenHeightTextsize,
+               context,
+               _controller.onTapInitialSetting
             ),
 
              Container(
-              width: 270,
-              height: 50,
-              padding: EdgeInsets.all(5),
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-              child: TextField(
-
-                decoration: InputDecoration(hintText: "UserName",
-                hintStyle: const TextStyle(fontSize: 10),
-              border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                    ),
-                    )),
-              ),
+              padding: EdgeInsets.all(10)
             ),
 
-            Container(
-                width: 270,
-                height: 50,
-                padding: EdgeInsets.all(5),
-                margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
-                child: TextField(
-                  decoration: InputDecoration(hintText: "User Identifier",
-                  hintStyle: const TextStyle(fontSize: 10),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
+           TextButton(
+              child: Text('Login'),
+              onPressed: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => mainPage()),
                 )
-               ),
-              Container(
-                padding: EdgeInsets.only(top: 100)
-              ),
-
-              Container(
-              child: OutlinedButton(
-                
-                child: const Text('Seve'),
-                style: OutlinedButton.styleFrom(
-                    primary: Colors.black,
-                    shape: const StadiumBorder(),
-                    side: const BorderSide(color: Color.fromRGBO(0, 0, 0, 1)),
-                    minimumSize: Size(270, 40)),
-                onPressed: () {
-                   Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => mainPage()),
-                );
-                }
-              ),
+              },
+              style: TextButton.styleFrom(),
             ),
-            Spacer()
+
+
+            Spacer(),
+
+
+            
           ],
         )
       )
+     )
      );
   }
 
